@@ -48,5 +48,27 @@ namespace senai.Filmes.WebApi.Controllers
             // Faz a chamada para o método .Listar();
             return _generoRepository.Listar();
         }
+
+        [HttpPost]
+        public IActionResult Post(GeneroDomain generoRecebido)
+        {
+            _generoRepository.Cadastrar(generoRecebido);
+
+            return StatusCode(201);
+        }
+
+        [HttpDelete ("{id}")]
+        public IActionResult Delete(int id)
+        {
+            _generoRepository.Deletar(id);
+
+            return NoContent();
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            GeneroDomain generoBuscado = _generoRepository.GetByid(id)
+        }
     }
 }
